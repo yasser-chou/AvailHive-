@@ -1,0 +1,37 @@
+.bg {
+  background-color: #f5f7f9;
+}
+
+.parent {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  position: relative;
+}
+
+.child {
+  padding: 50px;
+  width: 380px; /* Adjusted width for mobile responsiveness if needed */
+  background-color: white;
+  box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Ensure other styles are responsive and don't interfere with centering */
+[nz-form] {
+  max-width: 600px; /* Adjust based on your design needs */
+}
+
+.nz-form-item, nz-form-control {
+  min-width: 280px; /* Ensure form elements are responsive */
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+button {
+  background-color: #001529;
+  border: none;
+}

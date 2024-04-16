@@ -1,0 +1,50 @@
+.login-form {
+  max-width: 300px;
+  margin: 0 auto; // Centers the form horizontally within its parent
+}
+
+.imgDiv {
+  width: 100%;
+  vertical-align: middle;
+  margin-bottom: 40px;
+}
+
+.login-form-margin {
+  margin-bottom: 26px;
+}
+
+.login-form-forget {
+  float: right;
+}
+
+.login-form-button { // Corrected to ensure it targets a button inside .login-form correctly
+  width: 100%;
+}
+
+.child {
+  padding: 50px;
+  position: absolute;
+  width: 380px;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // Correctly center the element
+  box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 32px;
+}
+
+.parent {
+  width: 100%; // Should be 100% to take full width of the viewport
+  height: 89vh;
+  position: relative;
+}
+
+.button {
+  background-color: #001529;
+  border: none;
+}
+
+.bg {
+  background-color: #f5f7f9;
+}

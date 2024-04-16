@@ -1,0 +1,66 @@
+<div class="bg">
+  <!-- 'bg' class likely for background styling -->
+  <div class="parent">
+    <!-- 'parent' class for structural or styling purposes -->
+    <div class="child">
+      <!-- 'child' class for structural or styling purposes -->
+      <div nz-col>
+        <!-- nz-col directive from NG-ZORRO for grid column layout; requires a parent nz-row usually -->
+        <h1 style="margin-left: 55px;">Company Signup</h1>
+        <!-- Heading for the form with inline style for margin -->
+      </div>
+
+      <!-- Form bound to Angular FormGroup with NG-ZORRO styling applied -->
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+        <!-- Form item for email input with custom error tip -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid E-mail!">
+            <input nz-input placeholder="E-mail" formControlName="email" id="email" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Form item for password input with custom error tip -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Password!">
+            <input nz-input type="password" placeholder="Password" formControlName="password" id="password" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Form item for confirm password input with custom error tip -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Password!">
+            <input nz-input type="password" placeholder="Confirm Password" formControlName="checkPassword" id="checkPassword" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Form item for name input with custom error tip -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Name!">
+            <input nz-input placeholder="Name" formControlName="name" id="name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Form item for lastname input with custom error tip -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Address!">
+            <input nz-input placeholder="Address" formControlName="address" id="address" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Form item for phone input with custom error tip -->
+        <nz-form-item>
+          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Phone number!">
+            <input nz-input placeholder="Phone" formControlName="phone" id="phone" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Registration button with NZ primary style -->
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+          Register
+        </button>
+        Or <a routerLink="/login">login now!</a>
+      </form>
+    </div>
+  </div>
+</div>
