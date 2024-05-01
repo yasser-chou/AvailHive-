@@ -1,0 +1,48 @@
+<div style="background-color: #f8f8f8;">
+  <div class="parent">
+    <div class="child">
+
+      <div class="imgDiv">
+        <h2>Create Ad</h2>
+      </div>
+
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="postAd()">
+        <div nz-row>
+          <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+            <div class="profile-badge">
+              <!-- Image preview container with default image -->
+              <div class="image-preview-container">
+                <img class="profile" [src]="imagePreview || 'assets/logos/Greydefault.jpg'" alt="Service Image" />
+              </div>
+              <!-- Upload button that triggers the file input -->
+              <button type="button" class="upload-button" onclick="document.getElementById('upload_profile_image').click()">Upload Service Image</button>
+              <input id="upload_profile_image" type="file" accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelected($event)" style="display:none;" />
+            </div>
+          </div>
+          <div nz-col nzSpan="24" style="margin-top: 20px">
+            <nz-form-item>
+              <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+                <input nz-input placeholder="Service Name" formControlName="serviceName" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+                <input nz-input placeholder="Price" formControlName="price" type="number" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="24">
+            <nz-form-item>
+              <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+                <textarea rows="1" nz-input placeholder="Description" formControlName="description"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <button nz-button class="login-form-button" [nzType]="'primary'">Add</button>
+      </form>
+    </div>
+  </div>
+</div>

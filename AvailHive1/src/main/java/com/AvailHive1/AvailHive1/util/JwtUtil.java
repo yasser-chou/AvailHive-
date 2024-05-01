@@ -5,7 +5,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import jakarta.websocket.DecodeException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +15,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import static io.jsonwebtoken.Jwts.*;
+
 @Component
 public class JwtUtil {
     // The SECRET key should be kept safe and should not be exposed in your source code for production applications.
-    public static final String SECRET = "d3b5019d5dff8eb826057a7818372e436be8e76ab9cffd772b63f98c3ea28802";
+    public static final String SECRET = "V2FuZ2tpbWNoYW5nZUl0aXNBbGxHb29kVG9LZWVwU2VjcmV0c0FzU2VjcmV0czIwMjA=";
 
     // This method creates a JWT token for a given user.
     public String createToken(Map<String, Object> claims, String userName){
-        return Jwts.builder()
+        return builder()
                 .setClaims(claims) // Set the custom claims for the token
                 .setSubject(userName) // Set the subject, in this case, the userName
                 .setIssuedAt(new Date(System.currentTimeMillis())) // Set the issue date as current date
@@ -43,18 +44,18 @@ public class JwtUtil {
         return createToken(claims,userName);
     }
 
-    private Claims extractAllClaims(String token){
-        return Jwts
-                .parser()
+    private Claims extractAllClaims(String token) {
+        System.out.println("Received JWT: " + token); // Debugging statement to log the received token
+        return Jwts.parser()
                 .setSigningKey(getSignKey())
                 .parseClaimsJwt(token)
                 .getBody();
     }
 
+
     public <T> T extractClaim(String token, Function<Claims,T> claimsResolver){
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
-
     }
 
     public Date extractExpiration(String token){

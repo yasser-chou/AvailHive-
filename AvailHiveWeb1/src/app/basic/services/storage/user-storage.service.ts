@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-const TOKEN: 's_token' = 's_token';
-const USER: 's_user' = 's_user';
+const TOKEN = 's_token';
+const USER = 's_user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,55 +10,48 @@ export class UserStorageService {
 
   constructor() { }
 
-  public saveToken(token : string): void{
+  public saveToken(token: string): void {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.setItem(TOKEN, token);
   }
 
-  static getToken():string
-  {
+  public getToken(): string | null {
     return localStorage.getItem(TOKEN);
   }
 
-  public saveUser(user): void{
+  public saveUser(user: any): void {
     window.localStorage.removeItem(USER);
-    window.localStorage.setItem(user, JSON.stringify(user));
+    window.localStorage.setItem(USER, JSON.stringify(user));
   }
 
-  static getUser():any
-  {
-    return JSON.parse(localStorage.getItem(USER));
+  public getUser(): any {
+    const userString = localStorage.getItem(USER);
+    return userString ? JSON.parse(userString) : null;
   }
 
-  static getUserId(): string{
+  public getUserId(): string {
     const user = this.getUser();
-    if(user === null){return '';}
-    return user.userId;
+    return user ? user.userId : '';
   }
 
-  static getUserRole(): string{
+  public getUserRole(): string {
     const user = this.getUser();
-    if(user === null){return '';}
-    return user.role;
+    return user ? user.role : '';
   }
 
-  static isClientLoggedIn(): boolean{
-    if(this.getToken()=== null){
-      return false;
-    }
-    const role: string = this.getUserRole();
-    return role =='CLIENT';
+  public isClientLoggedIn(): boolean {
+    const token = this.getToken();
+    const role = this.getUserRole();
+    return token !== null && role === 'CLIENT';
   }
 
-  static isCompanyLoggedIn(): boolean{
-    if(this.getToken()=== null){
-      return false;
-    }
-    const role: string = this.getUserRole();
-    return role =='COMPANY';
+  public isCompanyLoggedIn(): boolean {
+    const token = this.getToken();
+    const role = this.getUserRole();
+    return token !== null && role === 'COMPANY';
   }
 
-  static signOut(): void{
+  public signOut(): void {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
   }
