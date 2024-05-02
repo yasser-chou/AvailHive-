@@ -48,7 +48,7 @@ public class JwtUtil {
         System.out.println("Received JWT: " + token); // Debugging statement to log the received token
         return Jwts.parser()
                 .setSigningKey(getSignKey())
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 

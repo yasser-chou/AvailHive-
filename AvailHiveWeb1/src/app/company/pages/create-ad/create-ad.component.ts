@@ -11,8 +11,8 @@ import { CompanyService } from "../../services/company.service";
 })
 export class CreateAdComponent implements OnInit {
 
-  selectedFile: File | null = null; // storing the image of the ad, initialized as null
-  imagePreview: string | ArrayBuffer | null = null; // initialized as null
+  selectedFile: File | null; // Storing the image of the ad, initialized as null
+  imagePreview: string | ArrayBuffer | null; // Initialized as null
   validateForm!: FormGroup;
 
   constructor(
@@ -31,32 +31,28 @@ export class CreateAdComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
-      this.previewImage();
-    }
+    this.selectedFile = event.target.files[0];
+    this.previewImage();
   }
 
   previewImage() {
-    if (this.selectedFile) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-      };
-      reader.readAsDataURL(this.selectedFile);
-    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
   }
 
   postAd() {
     if (this.validateForm.valid && this.selectedFile) {
       const formData: FormData = new FormData();
       formData.append('img', this.selectedFile);
-      formData.append('serviceName', this.validateForm.get('serviceName')?.value);
-      formData.append('description', this.validateForm.get('description')?.value);
-      formData.append('price', this.validateForm.get('price')?.value);
+      formData.append('serviceName', this.validateForm.get('serviceName').value);
+      formData.append('description', this.validateForm.get('description').value);
+      formData.append('price', this.validateForm.get('price').value);
 
-      this.companyService.postAd(formData).subscribe({
-        next: (res) => {
+      this.companyService.postAd(formData).subscribe(
+        () => {
           this.notification.success(
             'SUCCESS',
             'Ad Posted Successfully',
@@ -64,16 +60,14 @@ export class CreateAdComponent implements OnInit {
           );
           this.router.navigateByUrl('/company/ads');
         },
-        error: (error) => {
-          console.error(error); // Log the error object to console for full details
-          const errorMessage = error.error?.message || error.statusText || "An unexpected error occurred";
+        error => {
           this.notification.error(
-            "ERROR",
-            errorMessage,
+            'ERROR',
+            `${error.error}`,
             { nzDuration: 5000 }
           );
         }
-      });
+      );
     } else {
       this.notification.error(
         "ERROR",
@@ -82,6 +76,4 @@ export class CreateAdComponent implements OnInit {
       );
     }
   }
-
 }
-

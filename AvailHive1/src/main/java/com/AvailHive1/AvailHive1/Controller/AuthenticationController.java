@@ -43,7 +43,7 @@ public class AuthenticationController {
     @Autowired
     private UserRepository userRepository;
 
-    public static final String TOKEN_PREFIX ="Bearer";
+    public static final String TOKEN_PREFIX ="Bearer ";
 
     public static final String HEADER_STRING ="Authorization";
 

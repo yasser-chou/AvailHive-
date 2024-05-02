@@ -16,29 +16,20 @@ export class CompanyService {
   postAd(adDTO: any): Observable<any> {
     const userId = this.userStorageService.getUserId();
     return this.http.post(BASIC_URL + `api/company/ad/${userId}`, adDTO, {
-      headers : this.createAuthorizationHeader()
-    }).pipe(
-      catchError(this.handleError)
-    );
+      headers: this.createAuthorizationHeader()
+    })
+
   }
+
 
   createAuthorizationHeader(): HttpHeaders {
-    let authHeaders: HttpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',  // Ensure that the server expects JSON
-      'Authorization': 'Bearer ' + this.userStorageService.getToken()
-    });
-    return authHeaders;
+    let authHeaders: HttpHeaders = new HttpHeaders();// Ensure that the server expects JSON
+      return authHeaders.set(
+        'Authorization',
+        'Bearer ' + this.userStorageService.getToken()
+      )
   }
 
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(errorMessage);
   }
-}
+
+
