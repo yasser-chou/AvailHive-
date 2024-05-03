@@ -32,7 +32,6 @@ public class Ad {
 
     public AdDTO getAdDto(){
         AdDTO adDTO =new AdDTO();
-
         adDTO.setId(id);
         adDTO.setServiceName(serviceName);
         adDTO.setDescription(description);

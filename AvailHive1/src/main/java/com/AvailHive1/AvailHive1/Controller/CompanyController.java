@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/company")
@@ -23,6 +24,37 @@ public class CompanyController {
         if(success){
             return ResponseEntity.status(HttpStatus.OK).build();
 
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @GetMapping("/ads/{userId}")
+    public ResponseEntity<?> getAllAdsByUserId(@PathVariable Long userId) {
+        try {
+            List<AdDTO> ads = companyService.getAllAds(userId);
+            return ResponseEntity.ok(ads);
+        } catch (Exception ex) {
+            // Log the exception or handle it as needed
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while fetching ads");
+        }
+    }
+
+    @GetMapping("/ad/{adId}")
+    public ResponseEntity<?> getAdById(@PathVariable Long adId){
+        AdDTO adDTO = companyService.getAdById(adId);
+        if(adDTO != null){
+            return ResponseEntity.ok(adDTO);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PutMapping("/ad/{adId}")
+    public ResponseEntity<?> updateAd(@PathVariable Long adId, @ModelAttribute AdDTO adDTO) throws IOException {
+        boolean success = companyService.updateAd(adId,adDTO);
+        if(success){
+            return ResponseEntity.status(HttpStatus.OK).build();
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

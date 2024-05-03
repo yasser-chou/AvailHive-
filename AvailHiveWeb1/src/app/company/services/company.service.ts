@@ -11,7 +11,8 @@ const BASIC_URL = "http://localhost:8080/";
 })
 export class CompanyService {
 
-  constructor(private http: HttpClient, private userStorageService: UserStorageService) { }
+  constructor(private http: HttpClient, private userStorageService: UserStorageService) {
+  }
 
   postAd(adDTO: any): Observable<any> {
     const userId = this.userStorageService.getUserId();
@@ -21,15 +22,35 @@ export class CompanyService {
 
   }
 
+  getAllAdsByUserId(): Observable<any> {
+    const userId = this.userStorageService.getUserId();
+    return this.http.get(BASIC_URL + `api/company/ads/${userId}`,{
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
+  getAdById(adId:any): Observable<any> {
+    return this.http.get(BASIC_URL + `api/company/ad/${adId}`,{
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
+  updateAd(adId:any, adDTO:any):Observable<any> {
+    return this.http.put(BASIC_URL + `api/company/ad/${adId}`, adDTO, {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();// Ensure that the server expects JSON
-      return authHeaders.set(
-        'Authorization',
-        'Bearer ' + this.userStorageService.getToken()
-      )
-  }
+    return authHeaders.set(
+      'Authorization',
+      'Bearer ' + this.userStorageService.getToken()
+    )
 
   }
 
-
+}

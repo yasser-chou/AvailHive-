@@ -8,13 +8,17 @@ import { CreateAdComponent } from './pages/create-ad/create-ad.component';
 import {DemoNgZorroAntdModule} from "../DemoNgZorroAntModules";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NzButtonModule} from "ng-zorro-antd/button";
+import { AllAdsComponent } from './pages/all-ads/all-ads.component';
+import { UpdateAdComponent } from './pages/update-ad/update-ad.component';
 
 
 @NgModule({
   declarations: [
     CompanyComponent,
     CompanyDashboardComponent,
-    CreateAdComponent
+    CreateAdComponent,
+    AllAdsComponent,
+    UpdateAdComponent
   ],
   imports: [
     CommonModule,
