@@ -59,4 +59,15 @@ public class CompanyController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+
+    @DeleteMapping("/ad/{adId}")
+    public ResponseEntity<?> deleteAd(@PathVariable Long adId){
+        boolean success = companyService.deleteAd(adId);
+        if(success){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }

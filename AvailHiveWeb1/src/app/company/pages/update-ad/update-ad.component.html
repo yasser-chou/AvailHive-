@@ -9,22 +9,24 @@
       <form nz-form [formGroup]="validateForm" (ngSubmit)="updateAd()">
         <div nz-row>
           <div class="file-upload-container">
-            <label class="file-upload-label">
-              <span style="margin-left: 100px">Change Image</span>
-              <input type="file" nz-button nzType="primary" accept="image/x-png,image/gif,image/jpeg"
-                     (change)="onFileSelected($event)" />
-            </label>
-            <div *ngIf="imagePreview" class="image-preview">
+            <div *ngIf="imagePreview; else existingImageTemplate" class="image-preview">
               <div class="circle-image">
                 <img [src]="imagePreview" alt="Selected Image" class="preview-image" />
               </div>
             </div>
-
-            <div *ngIf="existingImage" class="image-preview">
-              <div class="circle-image">
-                <img [src]="existingImage" alt="Existing Image" class="preview-image" />
+            <ng-template #existingImageTemplate>
+              <div *ngIf="existingImage" class="image-preview">
+                <div class="circle-image">
+                  <img [src]="existingImage" alt="Existing Image" class="preview-image" />
+                </div>
               </div>
-            </div>
+            </ng-template>
+
+            <label class="file-upload-label stylish-button">
+              <span>Change Image</span>
+              <input type="file" nz-button nzType="primary" accept="image/x-png,image/gif,image/jpeg"
+                     (change)="onFileSelected($event)" />
+            </label>
           </div>
           <div nz-col nzSpan="24" style="margin-top: 20px">
             <nz-form-item>
@@ -48,7 +50,7 @@
             </nz-form-item>
           </div>
         </div>
-        <button nz-button type="submit" class="login-form-button" [nzType]="'primary'">Update Ad</button>
+        <button nz-button type="submit" class="update-button" [nzType]="'primary'">Update Ad</button>
       </form>
     </div>
   </div>

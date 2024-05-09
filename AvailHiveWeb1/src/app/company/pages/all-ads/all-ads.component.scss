@@ -1,3 +1,4 @@
+
 .bg {
   background-color: #f0f2f5;
   min-height: 91vh;
@@ -55,5 +56,11 @@
     button {
       margin-left: 10px;
     }
+  }
+
+  .red{
+    background-color: red;
+    color:white;
+    border:red;
   }
 }

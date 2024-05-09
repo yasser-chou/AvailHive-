@@ -12,7 +12,7 @@
           <p><strong>Description:</strong> {{ad.description}}</p>
           <div class="action-buttons">
             <button nz-button nzType="primary" [routerLink]="['/company/update', ad.id]">Update</button>
-            <button nz-button nzType="primary" nzDanger>Delete</button>
+            <button class="red" (click)="deleteAd(ad.id)"nz-button nzType="primary" nzDanger>Delete</button>
           </div>
         </div>
       </nz-col>
