@@ -2,6 +2,7 @@ package com.AvailHive1.AvailHive1.Controller;
 
 
 import com.AvailHive1.AvailHive1.dto.AdDTO;
+import com.AvailHive1.AvailHive1.dto.ReservationDTO;
 import com.AvailHive1.AvailHive1.services.company.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,5 +70,16 @@ public class CompanyController {
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+    @GetMapping("/bookings/{companyId}")
+    public ResponseEntity<List<ReservationDTO>> getAllAdBookings(@PathVariable Long companyId){
+        return ResponseEntity.ok(companyService.getAllAdBookings(companyId));
+    }
+
+    @GetMapping("/booking/{bookingId}/{status}")
+    public ResponseEntity<?>changeBookingStatus(@PathVariable Long bookingId,@PathVariable String status){
+        boolean success=companyService.changeBookingStatus(bookingId,status);
+        if(success) return ResponseEntity.ok().build();
+        return ResponseEntity.notFound().build();
     }
 }

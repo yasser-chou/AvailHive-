@@ -22,7 +22,7 @@
           <p><strong>Price:</strong> {{ad.price}}</p>
           <p><strong>Description:</strong> {{ad.description}}</p>
           <div class="action-buttons">
-           <button nzSize="small" nz-button nzType="primary" routerLink="client/ad/{{ad.id}}">View</button>
+           <button nzSize="small" nz-button nzType="primary"  [routerLink]="['/client/ad', ad.id]">View</button>
           </div>
         </div>
       </nz-col>

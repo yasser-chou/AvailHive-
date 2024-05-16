@@ -59,4 +59,18 @@ export class CompanyService {
     })
   }
 
+  getAllAdsBookings(): Observable<any> {
+    const companyId = this.userStorageService.getUserId()
+    return this.http.get(BASIC_URL + `api/company/bookings/${companyId}`,{
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
+  changeBookingStatus(bookingId:number,status:string): Observable<any>{
+    return this.http.get(BASIC_URL + `api/company/booking/${bookingId}/${status}`,{
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
 }

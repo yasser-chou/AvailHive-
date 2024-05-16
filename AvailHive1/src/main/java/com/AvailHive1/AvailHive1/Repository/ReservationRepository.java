@@ -1,2 +1,16 @@
-package com.AvailHive1.AvailHive1.Repository;public interface ReservationRepository {
+package com.AvailHive1.AvailHive1.Repository;
+
+
+import com.AvailHive1.AvailHive1.entity.Reservation;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+
+    List<Reservation> findAllByCompanyId(Long companyId);
+
+    List<Reservation> findAllByUserId(Long userId);
 }

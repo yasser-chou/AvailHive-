@@ -10,11 +10,17 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzWaveModule } from 'ng-zorro-antd/core/wave';
 import { DemoNgZorroAntdModule } from '../DemoNgZorroAntModules';
+import { AdDetailComponent } from './pages/ad-detail/ad-detail.component';
+import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
+import { ReviewComponent } from './pages/review/review.component';
 
 @NgModule({
   declarations: [
     ClientComponent,
-    ClientDashboardComponent
+    ClientDashboardComponent,
+    AdDetailComponent,
+    MyBookingsComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,

@@ -26,6 +26,38 @@ export class ClientService {
 
   }
 
+  getAdDetailsByAdId(adId:any): Observable<any> {
+    return this.http.get(BASIC_URL + `api/client/ad/${adId}`,{
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
+  bookService(bookDTO:any): Observable<any> {
+    return this.http.post(BASIC_URL + `api/client/book-service`,bookDTO,{
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
+
+  getMyBookings(): Observable<any> {
+    const userId =this.userStorageService.getUserId();
+    return this.http.get(BASIC_URL + `api/client/my-bookings/${userId}`,{
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
+  giveReview(reviewDTO:any): Observable<any> {
+    return this.http.post(BASIC_URL + `api/client/review`,reviewDTO,{
+      headers: this.createAuthorizationHeader()
+    })
+
+  }
+
+
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();// Ensure that the server expects JSON
     return authHeaders.set(
@@ -34,4 +66,6 @@ export class ClientService {
     )
 
   }
+
+
 }

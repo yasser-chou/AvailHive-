@@ -1,0 +1,88 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 90vh;
+  background-color: #f0f2f5;
+}
+
+.child {
+  padding: 50px;
+  width: 100%;
+  max-width: 680px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #001529;
+}
+
+textarea[nz-input] {
+  width: 100%;
+  border-radius: 4px;
+}
+
+button[nz-button] {
+  width: 100%;
+  background-color: #1890ff;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 0;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button[nz-button]:hover {
+  background-color: #40a9ff;
+}
+
+.nz-form-control {
+  min-width: 100%;
+}
+
+.rate-container {
+  display: flex;
+  align-items: center;
+}
+
+.rate-label {
+  margin-right: 8px;
+  font-weight: 600;
+  color: #001529;
+}
+
+.nz-rate {
+  font-size: 24px; /* Adjust the size of the stars */
+  margin-bottom: 20px; /* Space below the stars */
+}
+
+.nz-rate-star {
+  color: #fadb14; /* Color for filled stars */
+}
+
+.nz-rate-star-full {
+  color: #fadb14; /* Color for full stars */
+}
+
+.nz-rate-star-half .ant-rate-star-first,
+.nz-rate-star-half .ant-rate-star-second {
+  color: #fadb14; /* Color for half stars */
+}
+
+@media only screen and (max-width: 600px) {
+  .child {
+    padding: 30px;
+  }
+
+  .header {
+    font-size: 20px;
+  }
+}
