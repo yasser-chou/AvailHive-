@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientService} from "../../services/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-bookings',
@@ -10,7 +11,8 @@ export class MyBookingsComponent implements OnInit {
 
   bookedServices:any
 
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService,
+              private router:Router) { }
 
 
   ngOnInit(): void {
@@ -24,5 +26,7 @@ export class MyBookingsComponent implements OnInit {
     })
   }
 
-
+  reclamation(bookingId: number): void {
+    this.router.navigate(['/client/reclamation', bookingId]);
+  }
 }

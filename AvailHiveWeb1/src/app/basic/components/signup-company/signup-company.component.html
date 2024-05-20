@@ -1,67 +1,86 @@
 <div class="bg">
-  <!-- 'bg' class likely for background styling -->
   <div class="parent">
-    <!-- 'parent' class for structural or styling purposes -->
     <div class="child">
-      <!-- 'child' class for structural or styling purposes -->
       <div nz-col>
-        <!-- nz-col directive from NG-ZORRO for grid column layout; requires a parent nz-row usually -->
         <h1 style="margin-left: 55px;">Company Signup</h1>
-        <!-- Heading for the form with inline style for margin -->
       </div>
-
-      <!-- Form bound to Angular FormGroup with NG-ZORRO styling applied -->
       <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
 
-        <!-- Form item for email input with custom error tip -->
         <nz-form-item>
-          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid E-mail!">
+          <nz-form-control
+            [nzHasFeedback]="validateForm.get('email')?.value && validateForm.get('email')?.valid"
+            [nzValidateStatus]="validateForm.get('email')?.value && validateForm.get('email')?.valid ? 'success' : ''">
             <input nz-input placeholder="E-mail" formControlName="email" id="email" />
+            <nz-form-explain *ngIf="validateForm.get('email')?.invalid && (validateForm.get('email')?.dirty || validateForm.get('email')?.touched)">
+              <div *ngIf="validateForm.get('email')?.errors?.['required']">Email is required</div>
+              <div *ngIf="validateForm.get('email')?.errors?.['email']">Please enter a valid email address</div>
+            </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
-        <!-- Form item for password input with custom error tip -->
         <nz-form-item>
-          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Password!">
+          <nz-form-control
+            [nzHasFeedback]="validateForm.get('password')?.value && validateForm.get('password')?.valid"
+            [nzValidateStatus]="validateForm.get('password')?.value && validateForm.get('password')?.valid ? 'success' : ''">
             <input nz-input type="password" placeholder="Password" formControlName="password" id="password" />
+            <nz-form-explain *ngIf="validateForm.get('password')?.invalid && (validateForm.get('password')?.dirty || validateForm.get('password')?.touched)">
+              <div *ngIf="validateForm.get('password')?.errors?.['required']">Password is required</div>
+              <div *ngIf="validateForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long</div>
+              <div *ngIf="validateForm.get('password')?.errors?.['strongPassword']">Password must contain uppercase, lowercase, number, and special character</div>
+            </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
-        <!-- Form item for confirm password input with custom error tip -->
         <nz-form-item>
-          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Password!">
+          <nz-form-control
+            [nzHasFeedback]="validateForm.get('checkPassword')?.value && validateForm.get('checkPassword')?.valid"
+            [nzValidateStatus]="validateForm.get('checkPassword')?.value && validateForm.get('checkPassword')?.valid ? 'success' : ''">
             <input nz-input type="password" placeholder="Confirm Password" formControlName="checkPassword" id="checkPassword" />
+            <nz-form-explain *ngIf="validateForm.get('checkPassword')?.invalid && (validateForm.get('checkPassword')?.dirty || validateForm.get('checkPassword')?.touched)">
+              <div *ngIf="validateForm.get('checkPassword')?.errors?.['required']">Confirmation password is required</div>
+              <div *ngIf="validateForm.get('checkPassword')?.errors?.['matchOther']">Passwords do not match</div>
+            </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
-        <!-- Form item for name input with custom error tip -->
         <nz-form-item>
-          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Name!">
+          <nz-form-control
+            [nzHasFeedback]="validateForm.get('name')?.value && validateForm.get('name')?.valid"
+            [nzValidateStatus]="validateForm.get('name')?.value && validateForm.get('name')?.valid ? 'success' : ''">
             <input nz-input placeholder="Name" formControlName="name" id="name" />
+            <nz-form-explain *ngIf="validateForm.get('name')?.invalid && (validateForm.get('name')?.dirty || validateForm.get('name')?.touched)">
+              <div *ngIf="validateForm.get('name')?.errors?.['required']">Name is required</div>
+            </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
-        <!-- Form item for lastname input with custom error tip -->
         <nz-form-item>
-          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Address!">
+          <nz-form-control
+            [nzHasFeedback]="validateForm.get('address')?.value && validateForm.get('address')?.valid"
+            [nzValidateStatus]="validateForm.get('address')?.value && validateForm.get('address')?.valid ? 'success' : ''">
             <input nz-input placeholder="Address" formControlName="address" id="address" />
+            <nz-form-explain *ngIf="validateForm.get('address')?.invalid && (validateForm.get('address')?.dirty || validateForm.get('address')?.touched)">
+              <div *ngIf="validateForm.get('address')?.errors?.['required']">Address is required</div>
+            </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
-        <!-- Form item for phone input with custom error tip -->
         <nz-form-item>
-          <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Phone number!">
+          <nz-form-control
+            [nzHasFeedback]="validateForm.get('phone')?.value && validateForm.get('phone')?.valid"
+            [nzValidateStatus]="validateForm.get('phone')?.value && validateForm.get('phone')?.valid ? 'success' : ''">
             <input nz-input placeholder="Phone" formControlName="phone" id="phone" />
+            <nz-form-explain *ngIf="validateForm.get('phone')?.invalid && (validateForm.get('phone')?.dirty || validateForm.get('phone')?.touched)">
+              <div *ngIf="validateForm.get('phone')?.errors?.['pattern']">Please enter a valid phone number</div>
+            </nz-form-explain>
           </nz-form-control>
         </nz-form-item>
 
-        <!-- Registration button with NZ primary style -->
         <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
           Register
         </button>
         <br><br>
-        Already have an account!
-        <a routerLink="/login">login now!</a>
+        Already have an account? <a routerLink="/login">Login now!</a>
       </form>
     </div>
   </div>

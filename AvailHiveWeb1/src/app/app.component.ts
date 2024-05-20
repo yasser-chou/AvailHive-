@@ -12,11 +12,33 @@ export class AppComponent implements OnInit {
   title = 'AvailHiveWeb1';
   isClientLoggedIn: boolean = false;
   isCompanyLoggedIn: boolean = false;
+  isAdDropdownVisible = false;
+  isEmployerDropdownVisible = false;
 
   constructor(
     private router: Router,
     private userStorageService: UserStorageService // Inject the UserStorageService
   ) {}
+
+
+  toggleAdDropdown(): void {
+    this.isAdDropdownVisible = !this.isAdDropdownVisible;
+    if (this.isAdDropdownVisible) {
+      this.isEmployerDropdownVisible = false; // Ensure only one dropdown is visible
+    }
+  }
+
+  toggleEmployerDropdown(): void {
+    this.isEmployerDropdownVisible = !this.isEmployerDropdownVisible;
+    if (this.isEmployerDropdownVisible) {
+      this.isAdDropdownVisible = false; // Ensure only one dropdown is visible
+    }
+  }
+
+  closeDropdowns() {
+    this.isAdDropdownVisible = false;
+    this.isEmployerDropdownVisible = false;
+  }
 
   ngOnInit() {
     // Only respond to NavigationEnd events
@@ -28,8 +50,10 @@ export class AppComponent implements OnInit {
     });
   }
 
+
   logout() {
     this.userStorageService.signOut();
     this.router.navigateByUrl('/login');
+    this.closeDropdowns();
   }
 }

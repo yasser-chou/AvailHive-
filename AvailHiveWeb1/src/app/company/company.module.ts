@@ -10,6 +10,10 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import { AllAdsComponent } from './pages/all-ads/all-ads.component';
 import { UpdateAdComponent } from './pages/update-ad/update-ad.component';
+import { CreateEmployerComponent } from './pages/create-employer/create-employer.component';
+import { AllEmployersComponent } from './pages/all-employers/all-employers.component';
+import { EmployerProfileComponent } from './pages/employer-profile/employer-profile.component';
+import { UpdateEmployerComponent } from './pages/update-employer/update-employer.component';
 
 
 @NgModule({
@@ -18,7 +22,11 @@ import { UpdateAdComponent } from './pages/update-ad/update-ad.component';
     CompanyDashboardComponent,
     CreateAdComponent,
     AllAdsComponent,
-    UpdateAdComponent
+    UpdateAdComponent,
+    CreateEmployerComponent,
+    AllEmployersComponent,
+    EmployerProfileComponent,
+    UpdateEmployerComponent
   ],
   imports: [
     CommonModule,

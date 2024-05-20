@@ -1,8 +1,8 @@
 package com.AvailHive1.AvailHive1.services.company;
 
-import com.AvailHive1.AvailHive1.Repository.AdRepository;
-import com.AvailHive1.AvailHive1.Repository.ReservationRepository;
-import com.AvailHive1.AvailHive1.Repository.UserRepository;
+import com.AvailHive1.AvailHive1.repository.AdRepository;
+import com.AvailHive1.AvailHive1.repository.ReservationRepository;
+import com.AvailHive1.AvailHive1.repository.UserRepository;
 import com.AvailHive1.AvailHive1.dto.AdDTO;
 import com.AvailHive1.AvailHive1.dto.ReservationDTO;
 import com.AvailHive1.AvailHive1.entity.Ad;

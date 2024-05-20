@@ -1,4 +1,4 @@
-package com.AvailHive1.AvailHive1.Repository;
+package com.AvailHive1.AvailHive1.repository;
 
 import com.AvailHive1.AvailHive1.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

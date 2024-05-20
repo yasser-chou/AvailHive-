@@ -12,9 +12,10 @@
     <td style="font-weight: 600;">{{ booking.serviceName }}</td>
     <td>{{ booking.bookDate | date: 'dd/MM/yyyy' }}</td>
     <td style="font-weight: 600">{{ booking.reservationStatus }}</td>
-    <td>
+    <td *ngIf="booking.reservationStatus !== 'REJECTED'">
       <div style="display: flex; justify-content: flex-start; align-items: center;">
-        <button nzSize="small" nz-button nzType="primary" nzDanger [routerLink]="['/client/review', booking.id]">Review</button>
+        <button nzSize="small" nz-button nzType="primary" [routerLink]="['/client/review', booking.id]">Review</button>
+        <button *ngIf="booking.reservationStatus === 'APPROVED'" nzSize="small" nz-button nzType="default" style="margin-left: 10px;" (click)="reclamation(booking.id)">Reclamation</button>
       </div>
     </td>
   </tr>

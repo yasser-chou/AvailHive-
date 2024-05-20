@@ -1,0 +1,34 @@
+<div class="profile-container">
+  <div class="list-item" *ngIf="employer">
+    <div class="profile-card">
+      <img class="profile-image" [src]="updateImg(employer.returnedImg)" alt="{{employer.name}}">
+      <h2>{{employer.name}}</h2>
+      <div class="profile-info">
+        <div class="info-item">
+          <div class="attribute-name"><strong>Email:</strong></div>
+          <div class="attribute-value">{{employer.email}}</div>
+        </div>
+        <div class="info-item">
+          <div class="attribute-name"><strong>Phone number:</strong></div>
+          <div class="attribute-value">{{employer.phone}}</div>
+        </div>
+        <div class="info-item">
+          <div class="attribute-name"><strong>Position:</strong></div>
+          <div class="attribute-value">{{employer.position}}</div>
+        </div>
+        <div class="info-item">
+          <div class="attribute-name"><strong>Start Date:</strong></div>
+          <div class="attribute-value">{{employer.startDate}}</div>
+        </div>
+        <div class="info-item">
+          <div class="attribute-name"><strong>Salary:</strong></div>
+          <div class="attribute-value">{{employer.salary}} Dhs</div>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button nz-button nzType="primary" [routerLink]="['/company/update-employer', employer.id]">Update</button>
+        <button class="red" (click)="deleteEmployer(employer.id)" nz-button nzType="primary" nzDanger>Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,6 @@
   border-radius: 5px;
 }
 
-/* Ensure other styles are responsive and don't interfere with centering */
 [nz-form] {
   max-width: 600px; /* Adjust based on your design needs */
 }
@@ -34,4 +33,39 @@
 button {
   background-color: #001529;
   border: none;
+  color: white; /* Ensure button text is visible */
+  padding: 10px 0; /* Add padding for better appearance */
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+
+  &:hover {
+    background-color: #002140; /* Darken button color on hover */
+  }
+}
+
+a {
+  color: #001529; /* Link color */
+
+  &:hover {
+    text-decoration: underline; /* Underline link on hover */
+  }
+}
+
+/* Ensure feedback icons are aligned correctly */
+.nz-form-control {
+  position: relative;
+}
+
+.nz-form-control-feedback {
+  right: 10px; /* Adjust position as necessary */
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+/* Additional adjustments for form explain messages */
+.nz-form-explain {
+  color: #ff4d4f; /* Color for error messages */
+  margin-top: 5px; /* Space above error messages */
+  font-size: 12px; /* Smaller font size for error messages */
 }

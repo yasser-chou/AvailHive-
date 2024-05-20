@@ -1,6 +1,6 @@
 package com.AvailHive1.AvailHive1.services.authentication;
 
-import com.AvailHive1.AvailHive1.Repository.UserRepository;
+import com.AvailHive1.AvailHive1.repository.UserRepository;
 import com.AvailHive1.AvailHive1.dto.SignUpRequestDTO;
 import com.AvailHive1.AvailHive1.dto.UserDto;
 import com.AvailHive1.AvailHive1.entity.User;

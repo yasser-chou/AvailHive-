@@ -22,12 +22,32 @@ export class CompanyService {
 
   }
 
+  postEmployer(employerDTO:any): Observable<any>{
+    const userId = this.userStorageService.getUserId();
+    return this.http.post(BASIC_URL + `api/company/employer/${userId}`, employerDTO, {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
   getAllAdsByUserId(): Observable<any> {
     const userId = this.userStorageService.getUserId();
     return this.http.get(BASIC_URL + `api/company/ads/${userId}`,{
       headers: this.createAuthorizationHeader()
     })
 
+  }
+
+  getAllEmployersByUserId(): Observable<any>{
+    const userId =this.userStorageService.getUserId();
+    return this.http.get(BASIC_URL+ `api/company/employers/${userId}`,{
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
+  getEmployerById(employerId:any): Observable<any> {
+    return this.http.get(BASIC_URL+ `api/company/empprofile/${employerId}`,{
+      headers: this.createAuthorizationHeader()
+  })
   }
 
   getAdById(adId:any): Observable<any> {
@@ -42,6 +62,13 @@ export class CompanyService {
       headers: this.createAuthorizationHeader()
     })
   }
+
+  updateEmployer(employerId:any, employerDTO:any):Observable<any> {
+    return this.http.put(BASIC_URL + `api/company/employer/${employerId}`, employerDTO, {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
 
 
   createAuthorizationHeader(): HttpHeaders {
@@ -59,6 +86,12 @@ export class CompanyService {
     })
   }
 
+  deleteEmployer(employerId:any):Observable<any> {
+    return this.http.delete(BASIC_URL + `api/company/employer/${employerId}`, {
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
   getAllAdsBookings(): Observable<any> {
     const companyId = this.userStorageService.getUserId()
     return this.http.get(BASIC_URL + `api/company/bookings/${companyId}`,{
@@ -72,5 +105,7 @@ export class CompanyService {
       headers: this.createAuthorizationHeader()
     })
   }
+
+
 
 }

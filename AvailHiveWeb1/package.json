@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "ng-zorro-antd": "^13.4.0",
+    "primeicons": "^7.0.0",
+    "primeng": "^13.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "ws": "^8.17.0",

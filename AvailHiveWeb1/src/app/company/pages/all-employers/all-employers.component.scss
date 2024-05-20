@@ -1,0 +1,58 @@
+.bg {
+  background-color: #f0f2f5;
+  min-height: 91vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-item {
+  width: 100%;
+  max-width: 600px; /* Ensure the list has a reasonable width */
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.profile-image {
+  width: 60px; /* Adjust the size as needed */
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+.employer-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-start;
+
+  h2 {
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    cursor: default; /* Prevents cursor change to pointer */
+    text-decoration: none; /* Ensures no underline on hover */
+
+    &:hover {
+      text-decoration: none; /* Ensures no underline on hover */
+    }
+  }
+}
+
+.view-button {
+  margin-left: auto; /* Align the button to the right */
+}

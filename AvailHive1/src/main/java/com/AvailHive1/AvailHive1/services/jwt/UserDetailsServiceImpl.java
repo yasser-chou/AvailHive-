@@ -1,7 +1,7 @@
 package com.AvailHive1.AvailHive1.services.jwt;
 
 import com.AvailHive1.AvailHive1.entity.User;
-import com.AvailHive1.AvailHive1.Repository.UserRepository;
+import com.AvailHive1.AvailHive1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

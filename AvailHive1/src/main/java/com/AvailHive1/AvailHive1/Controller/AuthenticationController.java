@@ -1,6 +1,6 @@
 package com.AvailHive1.AvailHive1.Controller;
 
-import com.AvailHive1.AvailHive1.Repository.UserRepository;
+import com.AvailHive1.AvailHive1.repository.UserRepository;
 import com.AvailHive1.AvailHive1.dto.AuthenticationRequest;
 import com.AvailHive1.AvailHive1.dto.SignUpRequestDTO;
 import com.AvailHive1.AvailHive1.dto.UserDto;
@@ -20,7 +20,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;

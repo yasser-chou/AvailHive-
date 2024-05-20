@@ -1,32 +1,29 @@
 <!-- NG-ZORRO -->
 <div *ngIf="!isClientLoggedIn && !isCompanyLoggedIn">
-<nz-header class="main-header" nz-row  style="background-color: #bb2929">
-  <div style="display: flex; align-items: center;">
-    <img src="assets/logos/availhivelogo.svg" alt="AvailHive Logo" style="padding-right: 10px; height: 50px;">
-  </div>
-
-  <div class="nav-links">
-    <a nz-button nzType="link" routerLink="/home" routerLinkActive="active">Home</a>
-    <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Register</a>
-    <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
-  </div>
-</nz-header>
+  <nz-header class="main-header" nz-row>
+    <div style="display: flex; align-items: center;">
+      <img src="assets/logos/availhivelogo.svg" alt="AvailHive Logo" class="logo">
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/home" routerLinkActive="active">Home</a>
+      <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Register</a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+    </div>
+  </nz-header>
 </div>
 
 <div *ngIf="isClientLoggedIn">
-  <nz-header class="main-header" nz-row style="background-color: #bb2929">
+  <nz-header class="main-header" nz-row>
     <div style="display: flex; align-items: center;">
-      <img src="assets/logos/availhivelogo.svg" alt="AvailHive Logo" style="padding-right: 10px; height: 50px;">
+      <img src="assets/logos/availhivelogo.svg" alt="AvailHive Logo" class="logo">
     </div>
     <div class="nav-links">
       <a nz-button nzType="link" routerLink="/client/dashboard" routerLinkActive="active">Dashboard</a>
       <a nz-button nzType="link" routerLink="/client/bookings" routerLinkActive="active">Bookings</a>
       <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
-
     </div>
   </nz-header>
-
-  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav" >
+  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav">
     <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item>
         <a nz-button nzType="link" routerLink="/client/dashboard" routerLinkActive="active">Dashboard</a>
@@ -41,37 +38,45 @@
   </nz-sider>
 </div>
 
-
 <div *ngIf="isCompanyLoggedIn">
-  <nz-header class="main-header" nz-row  style="background-color: #bb2929">
+  <nz-header class="main-header" nz-row>
     <div style="display: flex; align-items: center;">
-      <img src="assets/logos/availhivelogo.svg" alt="AvailHive Logo" style="padding-right: 10px; height: 50px;">
+      <img src="assets/logos/availhivelogo.svg" alt="AvailHive Logo" class="logo">
     </div>
-    <div class="nav-links">
+    <div class="nav-links horizontal-nav">
       <a nz-button nzType="link" routerLink="/company/dashboard" routerLinkActive="active">Dashboard</a>
-      <a nz-button nzType="link" routerLink="/company/ad" routerLinkActive="active">Post Ad</a>
-      <a nz-button nzType="link" routerLink="/company/ads" routerLinkActive="active">Ads</a>
-      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
 
+      <nz-dropdown nzPlacement="bottomCenter">
+        <button nz-button nz-dropdown class="dropdown-button" (click)="toggleAdDropdown()">
+          Ads <i nz-icon nzType="down"></i>
+        </button>
+        <ul nz-menu nzSelectable *ngIf="isAdDropdownVisible" class="custom-dropdown">
+          <li nz-menu-item>
+            <a routerLink="/company/ad" style="color:black" (click)="closeDropdowns()"><i nz-icon nzType="plus" style="color:black"></i> Create Ad</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/company/ads" style="color:black" (click)="closeDropdowns()"><i nz-icon nzType="unordered-list" style="color:black"></i> See Ads</a>
+          </li>
+        </ul>
+      </nz-dropdown>
+
+      <nz-dropdown nzPlacement="bottomCenter">
+        <button nz-button nz-dropdown class="dropdown-button" (click)="toggleEmployerDropdown()">
+          Employers <i nz-icon nzType="down"></i>
+        </button>
+        <ul nz-menu nzSelectable *ngIf="isEmployerDropdownVisible" class="custom-dropdown">
+          <li nz-menu-item>
+            <a routerLink="/company/employer" style="color:black" (click)="closeDropdowns()"><i nz-icon nzType="user-add" style="color:black"></i> Add Employer</a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/company/employers" style="color:black" (click)="closeDropdowns()"><i nz-icon nzType="team" style="color:black"></i> View Employers</a>
+          </li>
+        </ul>
+      </nz-dropdown>
+
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
     </div>
   </nz-header>
-
-  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0" class="mobile-sidenav" >
-    <ul class="nav-links" nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item>
-        <a nz-button nzType="link" routerLink="/company/dashboard" routerLinkActive="active">Dashboard</a>
-      </li>
-      <li nz-menu-item>
-        <a nz-button nzType="link" routerLink="/company/ad" routerLinkActive="active">Ad</a>
-      </li>
-      <li nz-menu-item>
-        <a nz-button nzType="link" routerLink="/company/ads" routerLinkActive="active">Ads</a>
-      </li>
-      <li nz-menu-item>
-        <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
-      </li>
-    </ul>
-  </nz-sider>
 </div>
 
 <!-- View content of router -->
