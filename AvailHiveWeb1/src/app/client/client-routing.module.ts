@@ -5,6 +5,7 @@ import {ClientDashboardComponent} from "./pages/client-dashboard/client-dashboar
 import {AdDetailComponent} from "./pages/ad-detail/ad-detail.component";
 import {MyBookingsComponent} from "./pages/my-bookings/my-bookings.component";
 import {ReviewComponent} from "./pages/review/review.component";
+import {ReclamationComponent} from "./pages/reclamation/reclamation.component";
 
 const routes: Routes = [
   { path: '', component: ClientComponent },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'bookings', component: MyBookingsComponent },
   { path: 'ad/:adId', component: AdDetailComponent   },
   { path: 'review/:id', component: ReviewComponent   },
+  { path: 'reclamation/:id', component: ReclamationComponent   },
+
 
 
 

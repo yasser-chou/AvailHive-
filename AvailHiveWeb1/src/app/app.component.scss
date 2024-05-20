@@ -492,6 +492,11 @@ img.logo {
   width: 100px;
 }
 
+.custom-dropdown {
+  position : absolute;
+  z-index: 1000;
+}
+
 @media only screen and (min-width: 992px) {
   .main-header {
     .header-logo {
