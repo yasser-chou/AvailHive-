@@ -12,6 +12,7 @@ public interface EmployerService {
 
     boolean postEmployer(Long userId, EmployerDTO employerDTO) throws IOException;
     List<EmployerDTO> getAllEmployers(Long userId);
+    List<EmployerDTO> getEmployers();
     EmployerDTO getEmployerById(Long employerId);
     boolean updateEmployer(Long EmployerId,EmployerDTO employerDTO) throws IOException;
     boolean deleteEmployer(Long EmployerId);

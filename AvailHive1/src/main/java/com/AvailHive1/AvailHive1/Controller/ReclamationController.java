@@ -1,9 +1,10 @@
 package com.AvailHive1.AvailHive1.Controller;
 
-
+import com.AvailHive1.AvailHive1.dto.ReclamationDTO;
 import com.AvailHive1.AvailHive1.entity.Reclamation;
 import com.AvailHive1.AvailHive1.services.reclamation.ReclamationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,14 @@ public class ReclamationController {
     @Autowired
     private ReclamationService reclamationService;
 
-    public ResponseEntity<Reclamation> createReclamation(@RequestBody Reclamation reclamation){
-        Reclamation savedReclamation = reclamationService.saveReclamation(reclamation);
-        return ResponseEntity.ok(savedReclamation);
+    @PostMapping
+    public ResponseEntity<?> saveReclamation(@RequestBody ReclamationDTO reclamationDTO) {
+        boolean success = reclamationService.saveReclamation(reclamationDTO);
+        if (success) {
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @GetMapping
@@ -38,4 +44,6 @@ public class ReclamationController {
         reclamationService.deleteReclamation(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }

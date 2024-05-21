@@ -54,6 +54,11 @@ public class EmployerServiceImpl implements EmployerService{
         return employerRepository.findAllByUserId(userId).stream().map(Employer::getEmployerDTO).collect(Collectors.toList());
     }
 
+    @Override
+    public List<EmployerDTO> getEmployers() {
+        return employerRepository.findAll().stream().map(Employer::getEmployerDTO).collect(Collectors.toList());
+    }
+
     public EmployerDTO getEmployerById(Long employerId){
         Optional<Employer> optionalEmployer = employerRepository.findById(employerId);
         if(optionalEmployer.isPresent()){

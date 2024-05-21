@@ -1,6 +1,7 @@
 package com.AvailHive1.AvailHive1.dto;
 
 import com.AvailHive1.AvailHive1.entity.Employer;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,13 +11,14 @@ import java.util.Date;
 public class ReclamationDTO {
     private Long id;
 
-    private String descritpion;
+    private String description;
 
     private Date reclamationDate;
 
-    private String employerName;
 
-    private String serviceName;
+
+
+    private Long reservationId;
 
     private Long employerId;
 

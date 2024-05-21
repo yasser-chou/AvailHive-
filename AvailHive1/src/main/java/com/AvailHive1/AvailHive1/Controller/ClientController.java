@@ -1,8 +1,11 @@
 package com.AvailHive1.AvailHive1.Controller;
 
+import com.AvailHive1.AvailHive1.dto.ReclamationDTO;
 import com.AvailHive1.AvailHive1.dto.ReservationDTO;
 import com.AvailHive1.AvailHive1.dto.ReviewDTO;
+import com.AvailHive1.AvailHive1.entity.Reclamation;
 import com.AvailHive1.AvailHive1.services.client.ClientService;
+import com.AvailHive1.AvailHive1.services.reclamation.ReclamationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +20,9 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private ReclamationService reclamationService;
 
 
     @GetMapping("/ads")
@@ -64,5 +70,6 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+    
 }
 

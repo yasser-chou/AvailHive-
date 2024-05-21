@@ -2,6 +2,7 @@ package com.AvailHive1.AvailHive1.entity;
 
 
 import com.AvailHive1.AvailHive1.dto.ReservationDTO;
+import com.AvailHive1.AvailHive1.enums.ReclamationStatus;
 import com.AvailHive1.AvailHive1.enums.ReservationStatus;
 import com.AvailHive1.AvailHive1.enums.ReviewStatus;
 import jakarta.persistence.*;
@@ -9,7 +10,9 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,6 +25,8 @@ public class Reservation {
     private ReservationStatus reservationStatus;
 
     private ReviewStatus reviewStatus;
+
+    private ReclamationStatus reclamationStatus;
 
     private Date bookDate;
 
@@ -39,6 +44,9 @@ public class Reservation {
     @JoinColumn(name="Ad_id",nullable = false)
     @OnDelete(action= OnDeleteAction.CASCADE)
     private Ad ad;
+
+    @OneToMany()
+    private List<Reclamation> reclamations = new ArrayList<>();
 
     public ReservationDTO getReservationDto(){
         ReservationDTO dto = new ReservationDTO();

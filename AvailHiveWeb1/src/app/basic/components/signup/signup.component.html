@@ -1,20 +1,31 @@
- <div class="container">
-   <div class="section">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AvailHive</title>
+
+</head>
+<body>
+<video autoplay muted loop class="video-background">
+  <source src="assets/background.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<div class="container">
+  <div class="section">
     <div class="header">
-      <h1>Welcome to AvailHive </h1>
+      <h1>Welcome to AvailHive</h1>
       <p>Kindly choose your user type</p>
-
     </div>
-     <div class="buttons">
-        <button nz-button nzType="primary" routerLink="/register_company">
-          are you a  service provider?
-        </button>
-       <button nz-button nzType="primary" routerLink="/register_client">
-         Are you in need of a service?
-
-       </button>
-
-
-     </div>
-   </div>
- </div>
+    <div class="buttons">
+      <button nz-button nzType="primary" routerLink="/register_company">
+        Are you a service provider?
+      </button>
+      <button nz-button nzType="primary" routerLink="/register_client">
+        Are you in need of a service?
+      </button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

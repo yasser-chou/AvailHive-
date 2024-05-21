@@ -56,6 +56,12 @@ export class ClientService {
 
   }
 
+  saveReclamation(reclamationDTO:any): Observable<any> {
+    return this.http.post(BASIC_URL + `api/reclamations`,reclamationDTO,{
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
 
 
   createAuthorizationHeader(): HttpHeaders {
@@ -66,6 +72,8 @@ export class ClientService {
     )
 
   }
+
+
 
 
 }

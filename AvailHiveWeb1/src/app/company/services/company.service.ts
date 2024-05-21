@@ -44,6 +44,12 @@ export class CompanyService {
     })
   }
 
+  getAllEmployers(): Observable<any>{
+    return this.http.get(BASIC_URL+ `api/company/employers`,{
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
   getEmployerById(employerId:any): Observable<any> {
     return this.http.get(BASIC_URL+ `api/company/empprofile/${employerId}`,{
       headers: this.createAuthorizationHeader()

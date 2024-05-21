@@ -46,6 +46,16 @@ public class EmployerController {
         }
     }
 
+    @GetMapping("/employers")
+    public ResponseEntity<?> getAllEmployers() {
+        try {
+            List<EmployerDTO> ads = employerService.getEmployers();
+            return ResponseEntity.ok(ads);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while fetching employers");
+        }
+    }
+
 
     @GetMapping("/empprofile/{employerId}")
     public ResponseEntity<?> getEmployerById(@PathVariable Long employerId){

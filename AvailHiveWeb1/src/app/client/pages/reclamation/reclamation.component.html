@@ -1,1 +1,20 @@
-<p>reclamation works!</p>
+<div class="reclamation-container">
+  <form [formGroup]="reclamationForm" (ngSubmit)="save()">
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" placeholder="Enter your complaint"></textarea>
+    </div>
+    <div class="employers-list bg">
+      <div class="list-item" *ngFor="let employer of employers">
+        <img class="profile-image" [src]="updateImg(employer.returnedImg)" alt="{{employer.name}}">
+        <div class="employer-details">
+          <h2>{{employer.name}}</h2>
+        </div>
+        <div class="action-buttons">
+          <button type="button" nz-button [nzType]="employerId === employer.id ? 'dashed' : 'primary'" class="view-button" (click)="setSelectedEmployer(employer.id)">Select</button>
+        </div>
+      </div>
+    </div>
+    <button type="submit" nz-button nzType="primary">Submit</button>
+  </form>
+</div>
